@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "triframe start",
-    "heroku-postbuild": "webpack --config webpack.prod.js"
+    "start": "triframe start"
   },
   "keywords": [],
   "author": "",
