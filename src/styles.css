@@ -15,7 +15,7 @@
     align-items: center;
 } 
 
-.gift-item-card{
+.gift-item-card-unpurchased{
     grid-column: 1 / span 7;
     display: grid;
     grid-template-rows: 1fr;
@@ -23,7 +23,7 @@
     align-items: center;
     border: 1px solid black;
 }
-.gift-item-card > p {
+.gift-item-card-unpurchased > p {
     margin: 0;
 }
 .c1{

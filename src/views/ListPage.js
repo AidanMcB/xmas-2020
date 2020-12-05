@@ -89,6 +89,13 @@ export const ListPage = tether(function* ({ Api, useParams }) {
     await delGift.delete()
   }
 
+  // *** Buy A Gift Functionality *** // 
+  const purchaseAGift = async(thisGift) => {
+    let boughtGift =  await Gift.read(`${thisGift.id}`)
+    boughtGift.purchased = true;
+  }
+  // let gitfCardStyle = gift.purchased ? "gift-item-card-purchased" : "gift-item-card-unpurchased"
+
   return (
     <Container>
       <Heading>{user.name}'s Xmas List</Heading>
@@ -101,7 +108,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
         <Heading>Size</Heading>
         <Heading>Link</Heading>
         {user.gifts.map(gift => (
-          <div key={gift.id} elevation={5} className="gift-item-card">
+          <div key={gift.id} elevation={5} className={gitfCardStyle}>
             <p className="c1">{gift.item}</p>
             <p className="c2">{gift.store}</p>
             <p className="c3">${gift.price}</p>
@@ -109,7 +116,8 @@ export const ListPage = tether(function* ({ Api, useParams }) {
             <p className="c5">{gift.color} </p>
             <p className="c6">{gift.size} </p>
             <Button style={{ backgroundColor: "red", gridColumn: 7 }}><a className="link" href={gift.link} target="_blank">Link</a>!</Button>
-            {currentUser.id === user.id ? <Button onPress={() => handleDelete(gift)} icon="delete" /> : <Button style={{ gridColumn: 8 }}>Buy</Button>}
+            {currentUser.id === user.id ? <Button onPress={() => handleDelete(gift)} icon="delete" /> : 
+            <Button onPress={() => purchaseAGift(gift)} style={{ gridColumn: 8 }}>Buy</Button>}
           </div>
         ))}
       </div>
