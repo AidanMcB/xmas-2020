@@ -26,6 +26,8 @@ export const MainPage = tether(function*({ Api, redirect }) {
             <div className="user-cards-grid">
             {users.map(user => ( 
                 <Card
+                style={{backgroundColor: "orange"}}
+                className="user-card"
                 key={user.id}
                 onPress={() => redirect(`/list/${user.id}`)}
                 ><p>{user.name}</p></Card>

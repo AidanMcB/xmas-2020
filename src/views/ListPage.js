@@ -69,15 +69,26 @@ export const ListPage = tether(function* ({ Api, useParams }) {
   return (
     <Container>
       <Heading>{user.name}'s Xmas List</Heading>
-      {/* <Container className="user-gift-items-grid"> */}
+      <div className="gift-item-grid">
+        <Heading>Title</Heading>
+        <Heading>Store</Heading>
+        <Heading>Price</Heading>
+        <Heading>Sales Dates</Heading>
+        <Heading>Color</Heading>
+        <Heading>Size</Heading>
+        <Heading>Link</Heading>
         {user.gifts.map ( gift => (
-          <Card key={gift.id}>
-            <List.Item title="Item" description={gift.item}/>
-            <List.Item title="Store" desciption={gift.store}/>
-            <List.Item title="Price" description={gift.price} />
-          </Card>
+          <div key={gift.id} elevation={5} className="gift-item-card">
+            <p className="c1">{gift.item}</p>
+            <p className="c2">{gift.store}</p>
+            <p className="c3">${gift.price}</p>
+            <p className="c4">{gift.salesDate} </p>
+            <p className="c5">{gift.color} </p>
+            <p className="c6">{gift.size} </p>
+            <Button><a className="link" href={gift.link} target="_blank">Link</a>!</Button>
+          </div>
         ))}
-        {/* </Container> */}
+        </div>
 
       <BubbleButton onPress={handleShowModal}>
         Add a Gift!

@@ -4,5 +4,33 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
+    grid-gap: 10px;
 }
 /* List Page */
+.gift-item-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.gift-item-card{
+    grid-column: 1 / span 7;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    border: 1px solid black;
+}
+.gift-item-card > p {
+    margin: 0;
+}
+.c1{
+    margin-left: 10px !important;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
