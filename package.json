@@ -6,6 +6,14 @@
   "scripts": {
     "start": "triframe start"
   },
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ]
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,7 +27,7 @@
     "@babel/cli": "^7.12.8",
     "@triframe/confectioner": "0.0.3",
     "@triframe/designer": "^0.6.1",
-    "@triframe/mason": "^0.2.5",
+    "@triframe/mason": "^0.2.4",
     "babel-preset-triframe": "0.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
