@@ -46,3 +46,34 @@ Gift
                     Create
                 </Button>
             </Section>
+
+
+
+ ### Deployment Command For Triframe App
+npm install @triframe/mason
+npx triframe deploy add name-of-deployment
+
+"deployments": {
+    "staging": {
+      "target": "ratemyinterview",
+      "options": {}
+    }
+    
+"Staging"  = "ratemyinterview"
+"Target" : "Heroku
+(Below is working string if name is 'ratemyinterview')
+ "deployments":{"ratemyinterview":{"target":"Heroku","options":{}}}
+
+git push heroku ratemyinterview:main
+    options - Heroku 
+
+============
+
+(will fail partway thru)
+npx triframe deploy ratemyinterview
+
+git add . 
+git commit -m "text here"
+git push heroku ratemyinterview:main
+
+
