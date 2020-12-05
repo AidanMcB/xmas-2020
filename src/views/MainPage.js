@@ -1,12 +1,12 @@
 import React from 'react'
-import { tether, Section, TextInput, List, Container, Heading, Button } from '@triframe/designer'
+import { tether, Card, Title, Section, TextInput, List, Container, Heading, Button, Redirect } from '@triframe/designer'
 
 
-export const MainPage = tether(function*({ Api }) {
+export const MainPage = tether(function*({ Api, redirect }) {
 
     const { User } = Api;
 
-    const users = yield User.list()
+    const users = yield User.list() 
 
     const form = yield { name: '' }
 
@@ -17,31 +17,16 @@ export const MainPage = tether(function*({ Api }) {
 
     return (
         <Container>
-            <Heading>User List</Heading>
-            <Section>
-                {users.map(user => (
-                    <List.Item
-                        key={user.id}
-                        title={user.name}
-                        right={() => 
-                            <Button onPress={() => user.delete()}>
-                                Delete
-                            </Button>
-                        }
-                    />
-                ))}
-            </Section>
-            <Heading>User Form</Heading>
-            <Section>
-                <TextInput
-                    label="Name"
-                    value={form.name}
-                    onChange={ value => form.name = value }
-                />
-                <Button onPress={handleSubmit}>
-                    Create
-                </Button>
-            </Section>
+        <Title>Christmas List 2020!</Title>
+            <div className="user-cards-grid">
+            {users.map(user => ( 
+                <Card
+                key={user.id}
+                onPress={() => redirect(`/list/${user.id}`)}
+                ><p>{user.name}</p></Card>
+            ))}
+            </div>
+      
         </Container>
     )
 })  

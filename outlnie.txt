@@ -1,0 +1,48 @@
+USER MUST LOG IN TO ACCESS WEBSITE
+Main Page has Grid Container 
+    Grid Holds Card for Each Family Member
+        => You can view everyone's card(list) except your own 
+        Inside the listyou can,
+            =>Declare you are purchasing the item, "Gray it out"
+        Place to write what you want !
+
+Models:
+
+User:
+    has_many gifts
+----------
+Gift
+    belongs_to a user
+    (email optional)
+    item
+    store 
+    price 
+    any sale dates 
+    color 
+    size 
+    link 
+      <Heading>User List</Heading>
+            <Section>
+                {users.map(user => (
+                    <List.Item
+                        key={user.id}
+                        title={user.name}
+                        right={() => 
+                            <Button onPress={() => user.delete()}>
+                                Delete
+                            </Button>
+                        }
+                    />
+                ))}
+            </Section>
+            <Heading>User Form</Heading>
+            <Section>
+                <TextInput
+                    label="Name"
+                    value={form.name}
+                    onChange={ value => form.name = value }
+                />
+                <Button onPress={handleSubmit}>
+                    Create
+                </Button>
+            </Section>
