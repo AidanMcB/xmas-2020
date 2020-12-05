@@ -43,9 +43,7 @@ export const GiftItemCard = tether(function* ({ Api, useParams, props }) {
     }
 
     const handleDelete = async (delGift) => {
-        if (delGift.purchased) {
-            await delGift.delete()
-        }
+        await delGift.delete()
     }
     // *** Buy A Gift Functionality *** // 
     const purchaseAGift = async (thisGift) => {
