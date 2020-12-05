@@ -26,6 +26,18 @@
 .gift-item-card-unpurchased > p {
     margin: 0;
 }
+.gift-item-card-purchased{
+    grid-column: 1 / span 7;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    border: 1px solid black;
+    background-color: gray;
+}
+.gift-item-card-purchased > p {
+    margin: 0;
+}
 .c1{
     margin-left: 10px !important;
 }
