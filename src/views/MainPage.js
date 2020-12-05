@@ -6,6 +6,9 @@ export const MainPage = tether(function*({ Api, redirect }) {
 
     const { User } = Api;
 
+    const currentUser = yield User.current();
+
+
     const users = yield User.list() 
 
     const form = yield { name: '' }
@@ -14,7 +17,9 @@ export const MainPage = tether(function*({ Api, redirect }) {
         await User.create({ name: form.name })
         form.name = ''
     }
-
+    if(currentUser === null){
+        redirect('/login')
+    } 
     return (
         <Container>
         <Title>Christmas List 2020!</Title>
@@ -26,7 +31,6 @@ export const MainPage = tether(function*({ Api, redirect }) {
                 ><p>{user.name}</p></Card>
             ))}
             </div>
-      
         </Container>
     )
 })  

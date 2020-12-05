@@ -8,7 +8,7 @@ export const SignUp = tether(function* ({ Api, redirect }) {
     const { User } = Api
     
     const form = yield {
-        username: '',
+        name: '',
         password: '',
         errorMessage: null
 
@@ -23,9 +23,9 @@ export const SignUp = tether(function* ({ Api, redirect }) {
               style={{ backgroundColor: "#00dbc4", padding: "10px" }}>Sign Up</Heading>
             </Surface>
             <TextInput
-                label="Username"
-                value={form.username}
-                onChange={value => form.username = value}
+                label="name"
+                value={form.name}
+                onChange={value => form.name = value}
                 />
               <PasswordInput
                 label="Password"
@@ -35,7 +35,7 @@ export const SignUp = tether(function* ({ Api, redirect }) {
             <Button style={{backgroundColor: "#00dbc4", shadow:"black", hoverEffect:"black"}}
                 onPress={ async () => {
                     try{
-                    await User.register(form.username, form.password)
+                    await User.register(form.name, form.password)
                     redirect('/login')
                     }
                     catch(error){

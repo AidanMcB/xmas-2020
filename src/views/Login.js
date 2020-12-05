@@ -1,5 +1,4 @@
 /** @format */
-
 import React from "react";
 import {
   tether,
@@ -16,7 +15,7 @@ export const Login = tether(function* ({ Api, redirect }) {
   const { User } = Api;
 
   const form = yield {
-    username: "",
+    user: "",
     password: "",
     errorMessage: null,
   };
@@ -44,9 +43,9 @@ export const Login = tether(function* ({ Api, redirect }) {
           </Heading>
         </Surface>
         <TextInput
-          label="Username"
-          value={form.username}
-          onChange={(value) => (form.username = value)}
+          label="name"
+          value={form.name}
+          onChange={(value) => (form.name = value)}
           style={{ marginTop: "20px" }}
           sm={true}
         />
@@ -63,8 +62,8 @@ export const Login = tether(function* ({ Api, redirect }) {
           }}
           onPress={async () => {
             try {
-              await User.login(form.username, form.password);
-              redirect("/main");
+              await User.login(form.name, form.password);
+              redirect("/");
             } catch (error) {
               form.errorMessage = error.message;
             }
