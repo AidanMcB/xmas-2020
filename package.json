@@ -18,15 +18,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-google-maps/api": "^1.13.0",
     "@triframe/arbiter": "^0.5.1",
+    "@triframe/arbiter-react": "^0.4.5",
     "@triframe/core": "^0.2.4",
     "@triframe/scribe": "^0.2.7",
-    "bcrypt": "^5.0.0"
+    "bcrypt": "^5.0.0",
+    "mapbox-gl": "^1.12.0",
+    "react-map-gl": "^5.2.10"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.8",
+    "@babel/cli": "^7.12.1",
     "@triframe/confectioner": "0.0.3",
-    "@triframe/designer": "^0.6.1",
+    "@triframe/designer": "^0.6.0",
     "@triframe/mason": "^0.2.4",
     "babel-preset-triframe": "0.0.5",
     "react": "^16.13.1",
@@ -34,7 +38,7 @@
     "react-scripts": "^3.4.3"
   },
   "engines": {
-    "node": "12.18.2"
+    "node": "14.15.0"
   },
   "browserslist": {
     "production": [
