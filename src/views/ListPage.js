@@ -1,5 +1,5 @@
 import React from 'react'
-import { Snackbar, List, Header, BubbleButton, TextInput, HelperText, tether, Card, Title, Section, Container, Modal, Heading, Button } from '@triframe/designer'
+import { Snackbar, Icon, List, Header, BubbleButton, TextInput, HelperText, tether, Card, Title, Section, Container, Modal, Heading, Button } from '@triframe/designer'
 
 
 export const ListPage = tether(function* ({ Api, useParams }) {
@@ -23,21 +23,28 @@ export const ListPage = tether(function* ({ Api, useParams }) {
   //validation must go here in the front end
   const handleAddGift = async () => {
     // console.log(newGift)
-    try {
-      await Gift.create({
-        item: newGift.item,
-        store: newGift.store,
-        price: newGift.price,
-        salesDate: newGift.salesDate,
-        color: newGift.color,
-        size: newGift.size,
-        link: newGift.link,
-        userId: user.id
-      });
-      // redirect('/main')
-    } catch (error) {
-      // errors.message = error.message
-      console.log(error);
+    if (newGift.item.length < 1) {
+      addGiftModal.itemError = "You must at least enter the name of an item... "
+    } else {
+      try {
+        await Gift.create({
+          item: newGift.item,
+          store: newGift.store,
+          price: newGift.price,
+          salesDate: newGift.salesDate,
+          color: newGift.color,
+          size: newGift.size,
+          link: newGift.link,
+          userId: user.id,
+          purchased: false,
+        });
+        addGiftModal.visible = false;
+        addGiftModal.itemError = '';
+        resetNewGift()
+      } catch (error) {
+        // errors.message = error.message
+        console.log(error);
+      }
     }
 
   }
@@ -54,6 +61,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
     visible: false,
     errorMessage: '',
     errorVisible: false,
+    itemError: ''
   }
 
   const newGift = yield {
@@ -63,7 +71,22 @@ export const ListPage = tether(function* ({ Api, useParams }) {
     salesDate: '',
     color: '',
     size: '',
-    link: ''
+    link: '',
+    purchased: false,
+  }
+  const resetNewGift = () => {
+    newGift.item = '';
+    newGift.store = '';
+    newGift.price = '';
+    newGift.salesDate ='';
+    newGift.color = '';
+    newGift.size = '';
+    newGift.link = '';
+    newGift.purchased = false;
+  }
+
+  const handleDelete = async (delGift) => {
+    await delGift.delete()
   }
 
   return (
@@ -77,7 +100,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
         <Heading>Color</Heading>
         <Heading>Size</Heading>
         <Heading>Link</Heading>
-        {user.gifts.map ( gift => (
+        {user.gifts.map(gift => (
           <div key={gift.id} elevation={5} className="gift-item-card">
             <p className="c1">{gift.item}</p>
             <p className="c2">{gift.store}</p>
@@ -85,10 +108,11 @@ export const ListPage = tether(function* ({ Api, useParams }) {
             <p className="c4">{gift.salesDate} </p>
             <p className="c5">{gift.color} </p>
             <p className="c6">{gift.size} </p>
-            <Button><a className="link" href={gift.link} target="_blank">Link</a>!</Button>
+            <Button style={{ backgroundColor: "red", gridColumn: 7 }}><a className="link" href={gift.link} target="_blank">Link</a>!</Button>
+            {currentUser.id === user.id ? <Button onPress={() => handleDelete(gift)} icon="delete" /> : <Button style={{ gridColumn: 8 }}>Buy</Button>}
           </div>
         ))}
-        </div>
+      </div>
 
       <BubbleButton onPress={handleShowModal}>
         Add a Gift!
@@ -98,12 +122,15 @@ export const ListPage = tether(function* ({ Api, useParams }) {
       >{addGiftModal.errorMessage}</Snackbar>
 
       <Modal key={user.id} visible={addGiftModal.visible} onDismiss={() => addGiftModal.visible = false}>
-      <Container>
+        <Container>
           <Heading>What would you like for Christmas?</Heading>
           <TextInput
             label="Item"
             value={newGift.item}
             onChange={(value) => newGift.item = value} />
+          <HelperText type="error" visible={addGiftModal.itemError.length > 0}>
+            {addGiftModal.itemError}
+          </HelperText>
           <TextInput
             label="Store"
             value={newGift.store}
@@ -128,8 +155,8 @@ export const ListPage = tether(function* ({ Api, useParams }) {
             label="Link"
             value={newGift.link}
             onChange={(value) => newGift.link = value} />
-            <Button onPress={handleAddGift}>
-              Send It To Santa!
+          <Button onPress={handleAddGift}>
+            Send It To Santa!
             </Button>
         </Container>
       </Modal>

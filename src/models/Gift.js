@@ -1,6 +1,6 @@
 import { Model, string, include, session, hidden } from '@triframe/scribe'
 import { Resource } from '@triframe/core'
-import { belongsTo } from "@triframe/scribe/dist/decorators";
+import { belongsTo, boolean } from "@triframe/scribe/dist/decorators";
 
 export class Gift extends Resource {
 
@@ -29,6 +29,9 @@ export class Gift extends Resource {
 
     @string
     link = ""
+
+    @boolean
+    purchased = false
 
     // @session
     // static async makeGift(newGift) {
