@@ -1,10 +1,23 @@
+
 /* Main Page */
 .user-cards-grid{
-    color: blue;
+    color: white;
+    font-size: 2.5vh;
+    text-shadow: 1px 1px black;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
     grid-gap: 10px;
+    text-align: center;
+}
+.main-title{
+    border: 3px solid forestgreen;
+    border-radius: 25px;
+    font-size: 3vh;
+    text-shadow: 1px 1px green;
+    margin-bottom: 5%;
+    text-align: center;
+    background-color: rgba(255,255,255, 0.3);
 }
 /* List Page */
 .gift-item-grid{

@@ -21,12 +21,12 @@ export const MainPage = tether(function*({ Api, redirect }) {
         redirect('/login')
     } 
     return (
-        <Container>
-        <Title>Christmas List 2020!</Title>
+        <Container style={{backgroundColor: 'rgb(12,201,25)', height:"100vh", width:"100%", marginLeft: 0, padding: "5%"}}>
+        <div className="main-title"><h1>Christmas List 2020!</h1></div>
             <div className="user-cards-grid">
             {users.map(user => ( 
                 <Card
-                style={{backgroundColor: "orange"}}
+                style={{backgroundColor: 'rgb(255,2,2)'}}
                 className="user-card"
                 key={user.id}
                 onPress={() => redirect(`/list/${user.id}`)}

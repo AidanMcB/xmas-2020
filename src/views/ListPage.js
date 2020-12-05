@@ -1,6 +1,7 @@
 import React from 'react'
 import { Snackbar, Icon, List, Header, BubbleButton, TextInput, HelperText, tether, Card, Title, Section, Container, Modal, Heading, Button } from '@triframe/designer'
 import { GiftItemCard } from './GiftItemCard'
+import Domp from '../assets/domp.jpeg'
 
 export const ListPage = tether(function* ({ Api, useParams }) {
 
@@ -158,7 +159,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
             </Button>
         </Container>
       </Modal>
-
+          <img style={{margin: "auto"}} src={Domp} width="400px" height="400px"/>
 
     </Container>
   )
