@@ -43,13 +43,9 @@ export const GiftItemCard = tether(function* ({ Api, useParams, props }) {
     }
 
     const handleDelete = async (delGift) => {
-        if (!delGift.purchased) {
+        if (delGift.purchased) {
             await delGift.delete()
-        }else{
-            addGiftModal.errorMessage = 'It is too late to delete that item'
-            addGiftModal.errorVisible = true
         }
-
     }
     // *** Buy A Gift Functionality *** // 
     const purchaseAGift = async (thisGift) => {
@@ -58,7 +54,7 @@ export const GiftItemCard = tether(function* ({ Api, useParams, props }) {
     }
     //fixed delete
 
-    const cardStyle = gift.purchased && currentUser.id !== gift.userId ? "gift-item-card-purchased" : "gift-item-card-unpurchased"
+    const cardStyle = gift !== null && gift.purchased && currentUser.id !== gift.userId ? "gift-item-card-purchased" : "gift-item-card-unpurchased"
     if (gift === null) {
         return null
     }
