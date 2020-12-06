@@ -1,5 +1,14 @@
-{"name":"xmaslist","platform":"web",
- "deployments":{"xmaslist":{"target":"Heroku","options":{}}}
+{
+  "name": "xmaslist",
+  "platform": "web",
+  "deployments": {
+    "xmaslist": {
+      "target": "Heroku",
+      "options": {}
+    },
+    "staging": {
+      "target": "Heroku",
+      "options": {}
+    }
+  }
 }
-
-   
