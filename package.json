@@ -30,7 +30,11 @@
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@triframe/confectioner": "0.0.3",
+<<<<<<< HEAD
     "@triframe/designer": "^0.6.0",
+=======
+    "@triframe/designer": "^0.6.1",
+>>>>>>> f15a4d4faff5af612541794d08b40e838b932754
     "@triframe/mason": "^0.2.4",
     "babel-preset-triframe": "0.0.5",
     "react": "^16.13.1",

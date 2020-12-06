@@ -43,7 +43,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
         addGiftModal.itemError = '';
         resetNewGift()
       } catch (error) {
-        // errors.message = error.message
+        addGiftModal.adEr = error.message
         console.log(error);
       }
     }
@@ -62,7 +62,8 @@ export const ListPage = tether(function* ({ Api, useParams }) {
     visible: false,
     errorMessage: '',
     errorVisible: false,
-    itemError: ''
+    itemError: '',
+    adEr: '',
   }
 
   const newGift = yield {
