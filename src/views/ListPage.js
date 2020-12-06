@@ -1,6 +1,7 @@
 import React from 'react'
 import { Snackbar, Icon, List, Header, BubbleButton, TextInput, HelperText, tether, Card, Title, Section, Container, Modal, Heading, Button } from '@triframe/designer'
-
+import { GiftItemCard } from './GiftItemCard'
+import Domp from '../assets/domp.jpeg'
 
 export const ListPage = tether(function* ({ Api, useParams }) {
 
@@ -108,17 +109,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
         <Heading>Size</Heading>
         <Heading>Link</Heading>
         {user.gifts.map(gift => (
-          <div key={gift.id} elevation={5} className={gitfCardStyle}>
-            <p className="c1">{gift.item}</p>
-            <p className="c2">{gift.store}</p>
-            <p className="c3">${gift.price}</p>
-            <p className="c4">{gift.salesDate} </p>
-            <p className="c5">{gift.color} </p>
-            <p className="c6">{gift.size} </p>
-            <Button style={{ backgroundColor: "red", gridColumn: 7 }}><a className="link" href={gift.link} target="_blank">Link</a>!</Button>
-            {currentUser.id === user.id ? <Button onPress={() => handleDelete(gift)} icon="delete" /> : 
-            <Button onPress={() => purchaseAGift(gift)} style={{ gridColumn: 8 }}>Buy</Button>}
-          </div>
+          <GiftItemCard gift={gift.id} key={gift.id}/>
         ))}
       </div>
 
@@ -168,7 +159,7 @@ export const ListPage = tether(function* ({ Api, useParams }) {
             </Button>
         </Container>
       </Modal>
-
+          <img style={{margin: "auto"}} src={Domp} width="400px" height="400px"/>
 
     </Container>
   )
